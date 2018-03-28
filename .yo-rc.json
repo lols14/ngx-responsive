@@ -1,0 +1,38 @@
+{
+  "generator-ngx-library": {
+    "version": "5.7.1",
+    "authorName": "Sergiy",
+    "authorEmail": "sergiypavlichenko@gmail.com",
+    "githubUsername": "lols14",
+    "githubRepoName": "ngx-responsive-helper",
+    "projectName": "ngx-responsive-helper",
+    "projectVersion": "0.0.1",
+    "projectDescription": "Angular library that helps you to control component sizes.",
+    "projectKeywords": [
+      "ng",
+      "angular",
+      "responsive",
+      "component"
+    ],
+    "ngVersion": "5.0.0",
+    "ngModules": [
+      "core",
+      "common"
+    ],
+    "otherDependencies": [
+      "lodash"
+    ],
+    "dependenciesRange": "^",
+    "ngPrefix": "ngx-responsive-helper",
+    "testingFramework": "karma",
+    "useGreenkeeper": true,
+    "useCompodoc": true,
+    "enforceNgGitCommitMsg": false,
+    "exclusions": [
+      "demo/src/jestGlobalMocks.ts",
+      "demo/src/setupJest.ts",
+      "config/jestGlobalMocks.ts",
+      "config/setupJest.ts"
+    ]
+  }
+}
