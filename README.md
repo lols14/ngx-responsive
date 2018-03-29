@@ -4,12 +4,12 @@
 
 # ngx-responsive - Angular library that helps you to control component sizes.
 
-[![npm version](https://badge.fury.io/js/ngx-responsive.svg)](https://badge.fury.io/js/ngx-responsive),
-[![Build Status](https://travis-ci.org/lols14/ngx-responsive.svg?branch=master)](https://travis-ci.org/lols14/ngx-responsive)
-[![Coverage Status](https://coveralls.io/repos/github/lols14/ngx-responsive/badge.svg?branch=master)](https://coveralls.io/github/lols14/ngx-responsive?branch=master)
-[![dependency Status](https://david-dm.org/lols14/ngx-responsive/status.svg)](https://david-dm.org/lols14/ngx-responsive)
-[![devDependency Status](https://david-dm.org/lols14/ngx-responsive/dev-status.svg?branch=master)](https://david-dm.org/lols14/ngx-responsive#info=devDependencies)
-[![Greenkeeper Badge](https://badges.greenkeeper.io/lols14/ngx-responsive.svg)](https://greenkeeper.io/)
+[![npm version](https://badge.fury.io/js/ngx-responsive-helper.svg)](https://badge.fury.io/js/ngx-responsive-helper),
+[![Build Status](https://travis-ci.org/lols14/ngx-responsive-helper.svg?branch=master)](https://travis-ci.org/lols14/ngx-responsive-helper)
+[![Coverage Status](https://coveralls.io/repos/github/lols14/ngx-responsive-helper/badge.svg)](https://coveralls.io/github/lols14/ngx-responsive-helper)
+[![dependency Status](https://david-dm.org/lols14/ngx-responsive-helper/status.svg)](https://david-dm.org/lols14/ngx-responsive-helper)
+[![devDependency Status](https://david-dm.org/lols14/ngx-responsive-helper/dev-status.svg?branch=master)](https://david-dm.org/lols14/ngx-responsive-helper#info=devDependencies)
+[![Greenkeeper Badge](https://badges.greenkeeper.io/lols14/ngx-responsive-helper.svg)](https://greenkeeper.io/)
 
 ## Main goal
 

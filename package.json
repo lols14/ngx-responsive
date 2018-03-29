@@ -1,7 +1,7 @@
 {
   "name": "ngx-responsive-helper",
   "description": "Angular library that helps you to control component sizes.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/lols14/ngx-responsive-helper",
   "author": {
     "name": "Sergiy",
@@ -13,9 +13,15 @@
   },
   "license": "MIT",
   "keywords": [
-    "ng",
     "angular",
+    "angular2",
+    "angular4",
+    "angular5",
+    "ng2",
+    "ng",
+    "ngx",
     "responsive",
+    "resize",
     "component"
   ],
   "bugs": {
