@@ -1,15 +1,15 @@
-import {Breakpoints}       from "./breakpoints";
-import {ResponsiveService} from "./responsive";
+import {Breakpoints}       from './breakpoints';
+import {ResponsiveService} from './responsive';
 
 
-describe("Responsive service", function () {
+describe('Responsive service', function () {
   let service: ResponsiveService;
 
   beforeEach(function () {
     service = new ResponsiveService();
   });
 
-  it("should call correct callbacks", function () {
+  it('should call correct callbacks', function () {
     let phoneCalled = false;
     let tabletPortraitCalled = false;
     let tabletLandscapeCalled = false;
@@ -31,7 +31,7 @@ describe("Responsive service", function () {
       desktopCalled = true;
     });
 
-    (service as any).width  = 400;
+    (service as any).width = 400;
     (service as any).callCallbacks();
     expect(phoneCalled).toBeTruthy();
     expect(tabletPortraitCalled).toBeFalsy();
@@ -43,7 +43,7 @@ describe("Responsive service", function () {
     tabletLandscapeCalled = false;
     desktopCalled = false;
 
-    (service as any).width  = 768;
+    (service as any).width = 768;
     (service as any).callCallbacks();
     expect(phoneCalled).toBeTruthy();
     expect(tabletPortraitCalled).toBeTruthy();
@@ -51,7 +51,7 @@ describe("Responsive service", function () {
     expect(desktopCalled).toBeFalsy();
   });
 
-  it("should subscribe properly", () => {
+  it('should subscribe properly', () => {
     let cb1Called = false;
     let cb2Called = false;
     const cb1 = () => {
@@ -64,7 +64,7 @@ describe("Responsive service", function () {
     service.subscribe(Breakpoints.forPhoneUp, cb1);
     service.subscribe(Breakpoints.forPhoneUp, cb2);
 
-    (service as any).width  = 400;
+    (service as any).width = 400;
     (service as any).callCallbacks();
 
     expect(cb1Called).toBeTruthy();
@@ -76,11 +76,17 @@ describe("Responsive service", function () {
     service.unsubscribe(Breakpoints.forPhoneUp, cb1);
     service.unsubscribe(Breakpoints.forPhoneUp, cb2);
 
-    (service as any).width  = 400;
+    (service as any).width = 400;
     (service as any).callCallbacks();
     expect(cb1Called).toBeFalsy();
     expect(cb2Called).toBeFalsy();
+  });
 
+  it('should to have current breakpoint', () => {
+    (window['innerWidth'] as any) = 400;
+    service = new ResponsiveService();
+
+    expect(service.currentBreakpoint).toEqual(Breakpoints.forPhoneUp);
   });
 
 });

@@ -6,8 +6,10 @@ import {Breakpoints, breakpointsMap} from './breakpoints';
 export class ResponsiveService {
   private width = window.innerWidth;
   private cbs: { [key: string]: [() => any] } = {};
+  currentBreakpoint: Breakpoints;
 
   constructor() {
+    this.onResize();
     this.onResize = debounce(this.onResize, 5);
     window.addEventListener('resize', this.onResize);
   }
@@ -37,8 +39,21 @@ export class ResponsiveService {
     });
   };
 
+  getCurrentBreakpoint = (): Breakpoints => {
+    let breakpoint: Breakpoints;
+
+    breakpointsMap.forEach((value, key: Breakpoints) => {
+      if (value[0] <= this.width && this.width <= value[1]) {
+        breakpoint = key;
+      }
+    });
+
+    return breakpoint;
+  };
+
   private onResize = () => {
     this.width = window.innerWidth;
+    this.currentBreakpoint = this.getCurrentBreakpoint();
     this.callCallbacks();
   };
 
