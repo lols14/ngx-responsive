@@ -7,13 +7,13 @@ import {breakpointsMapToken} from './breakpoints-map';
 export class ResponsiveService {
   private width: number;
   private cbs: { [key: string]: [() => any] } = {};
-  currentBreakpoint: Breakpoints;
+  currentBreakpoint: Breakpoints | null = null;
 
   constructor(@Inject(breakpointsMapToken)
               public breakpointsMap: Map<Breakpoints, number[]>
   ) {
     this.onResize();
-    this.onResize = debounce(this.onResize, 5);
+    this.onResize = debounce(this.onResize, 20);
     window.addEventListener ? window.addEventListener('resize', this.onResize) : this.noop();
   }
 
@@ -45,6 +45,7 @@ export class ResponsiveService {
   getCurrentBreakpoint = (): Breakpoints => {
     let breakpoint: Breakpoints;
 
+
     this.breakpointsMap.forEach((value, key: Breakpoints) => {
       if (value[0] <= this.width && this.width <= value[1]) {
         breakpoint = key;
@@ -55,7 +56,7 @@ export class ResponsiveService {
   };
 
   private onResize = () => {
-    this.width = window.innerWidth;
+    this.width = window.innerWidth || 0;
     this.currentBreakpoint = this.getCurrentBreakpoint();
     this.callCallbacks();
   };

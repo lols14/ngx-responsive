@@ -3,20 +3,28 @@ import {Breakpoints}                 from './breakpoints';
 import {CustomInjectable}            from './injectable';
 import {ResponsiveService}           from './responsive.service';
 
-type Constructor<T = {}> = new (...args: any[]) => T;
+export type Constructor<T = {}> = new (...args: any[]) => T;
 
-interface IResponsiveComponent {
+export interface IResponsiveComponent {
   injector: Injector
+
   ngOnInit?(): void;
+
   ngOnDestroy?(): void;
+
   forPhoneUp?(): void;
+
   forTabletPortraitUp?(): void;
+
   forTabletLandscapeUp?(): void;
+
   forDesktopUp?(): void;
+
   forBigDesktop?(): void;
 }
 
-export function ResponsiveComponent<T extends Constructor<IResponsiveComponent>>(Base: T) {
+export function ResponsiveComponent<T extends Constructor<IResponsiveComponent>>(Base: T): any {
+
   @CustomInjectable()
   class ResponsiveComponentMixin extends Base implements OnInit, OnDestroy {
     responsiveService: ResponsiveService;
@@ -25,7 +33,6 @@ export function ResponsiveComponent<T extends Constructor<IResponsiveComponent>>
       super(...args);
     }
 
-
     ngOnInit() {
       this.responsiveService = this.injector.get(ResponsiveService);
       this.responsiveService.subscribe(Breakpoints.forPhoneUp, this.forPhoneUp);
@@ -33,7 +40,11 @@ export function ResponsiveComponent<T extends Constructor<IResponsiveComponent>>
       this.responsiveService.subscribe(Breakpoints.forTabletLandscapeUp, this.forTabletLandscapeUp);
       this.responsiveService.subscribe(Breakpoints.forDesktopUp, this.forDesktopUp);
       this.responsiveService.subscribe(Breakpoints.forBigDesktop, this.forBigDesktop);
-      super.ngOnInit();
+      this.responsiveService.callCallbacks();
+
+      if (super.ngOnInit) {
+        super.ngOnInit();
+      }
     }
 
     ngOnDestroy() {
@@ -42,7 +53,10 @@ export function ResponsiveComponent<T extends Constructor<IResponsiveComponent>>
       this.responsiveService.unsubscribe(Breakpoints.forTabletLandscapeUp, this.forTabletLandscapeUp);
       this.responsiveService.unsubscribe(Breakpoints.forDesktopUp, this.forDesktopUp);
       this.responsiveService.unsubscribe(Breakpoints.forBigDesktop, this.forBigDesktop);
-      super.ngOnInit();
+
+      if (super.ngOnDestroy) {
+        super.ngOnDestroy();
+      }
     }
 
     forPhoneUp() {
@@ -67,7 +81,6 @@ export function ResponsiveComponent<T extends Constructor<IResponsiveComponent>>
       if (super.forDesktopUp) {
         super.forDesktopUp();
       }
-
     }
 
     forBigDesktop() {

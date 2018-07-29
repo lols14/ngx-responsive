@@ -1,0 +1,21 @@
+\:host
+  display: grid
+  grid-gap: 10px
+  grid-template-areas:  "main main sidebar" "main main sidebar"
+
+  header
+    grid-area: header
+    border: 1px black solid
+    height: 50px
+
+  .main
+    grid-area: main
+
+  .sidebar
+    max-width: 300px
+    width: 100%
+    grid-area: sidebar
+    app-card-preview:first-child
+      margin-bottom: 10px
+
+

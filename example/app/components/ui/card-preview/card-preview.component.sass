@@ -1,0 +1,35 @@
+\:host
+  display: block
+  position: relative
+  box-shadow: -2px 2px 10px 0px rgba(#444, 0.4)
+
+  img
+    width: 100%
+    height: calc(100% - 50px)
+
+  .color-options
+    height: 50px
+    width: 100%
+    position: absolute
+    bottom: 0
+    display: flex
+    justify-content: center
+    align-items: center
+
+  .color-option
+    display: inline-block
+    width: 32px
+    height: 32px
+    border-radius: 50%
+    border: 1px black solid
+
+    &:not(:last-child)
+      margin-right: 5px
+
+  &.xs
+    height: 450px
+  &.s
+    height: 525px
+  &.m
+    height: 620px
+

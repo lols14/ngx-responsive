@@ -3,27 +3,29 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "responsive-example": {
+    "ngx-responsive-helper-example": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        ":component": {
+          "styleext": "sass"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-responsive-helper",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "outputPath": "dist/ngx-responsive-helper-example",
+            "index": "example/index.html",
+            "main": "example/main.ts",
+            "polyfills": "example/polyfills.ts",
+            "tsConfig": "example/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "example/styles.sass"
             ],
             "scripts": []
           },
@@ -31,8 +33,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "example/environments/environment.ts",
+                  "with": "example/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -50,77 +52,48 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-responsive-helper:build"
+            "browserTarget": "ngx-responsive-helper-example:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-responsive-helper:build:production"
+              "browserTarget": "ngx-responsive-helper-example:build:production"
             }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
     },
     "ngx-responsive-helper": {
-      "root": "projects/responsive",
-      "sourceRoot": "projects/responsive/src",
+      "root": "lib",
+      "sourceRoot": "lib/src",
       "projectType": "library",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/responsive/tsconfig.lib.json",
-            "project": "projects/responsive/ng-package.json"
+            "tsConfig": "lib/tsconfig.lib.json",
+            "project": "lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/responsive/ng-package.prod.json"
+              "project": "lib/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/helper/src/test.ts",
-            "tsConfig": "projects/helper/tsconfig.spec.json",
-            "karmaConfig": "projects/helper/karma.conf.js"
+            "main": "lib/src/test.ts",
+            "tsConfig": "lib/tsconfig.spec.json",
+            "karmaConfig": "lib/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/helper/tsconfig.lib.json",
-              "projects/helper/tsconfig.spec.json"
+              "lib/tsconfig.lib.json",
+              "lib/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

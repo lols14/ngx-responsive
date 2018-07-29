@@ -1,6 +1,6 @@
-import {Breakpoints}       from '../src/lib/breakpoints';
-import {breakpointsMap}    from '../src/lib/breakpoints-map';
-import {ResponsiveService} from '../src/lib/responsive.service';
+import {Breakpoints}       from '../lib/breakpoints';
+import {breakpointsMap}    from '../lib/breakpoints-map';
+import {ResponsiveService} from '../lib/responsive.service';
 
 describe('Responsive service', function () {
   let service: ResponsiveService;

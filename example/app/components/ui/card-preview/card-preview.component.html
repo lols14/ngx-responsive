@@ -1,0 +1,9 @@
+<img [src]="card">
+
+<div class="color-options">
+
+  <ng-template ngFor let-task [ngForOf]="colorOptions" let-i="index">
+    <div class="color-option" *ngIf="i < colorOptionCount"></div>
+  </ng-template>
+
+</div>
