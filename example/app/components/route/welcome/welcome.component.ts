@@ -1,5 +1,5 @@
 import {Component, Injector} from '@angular/core';
-import {ComponentSize}       from '../../../../../lib/src/lib/component-sizes';
+import {ComponentSize}       from '../../../../../lib/src/public_api';
 
 @Component({
   selector: 'app-welcome',

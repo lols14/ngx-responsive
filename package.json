@@ -5,7 +5,8 @@
     "ng": "ng",
     "build": "ng build ngx-responsive-helper",
     "test": "ng test ngx-responsive-helper",
-    "build:example": "ng build ngx-responsive-helper-example",
+    "build:example": "ng build ngx-responsive-helper-example --base-href \"https://s3141.github.io/ngx-responsive-helper/\"",
+    "github-pages": "angular-cli-ghpages --no-silent=false --dir=./dist/ngx-responsive-helper-example",
     "start": "ng serve ngx-responsive-helper-example"
   },
   "private": true,

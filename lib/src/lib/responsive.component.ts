@@ -1,7 +1,7 @@
-import {Injector, OnDestroy, OnInit} from '@angular/core';
-import {Breakpoints}                 from './breakpoints';
-import {CustomInjectable}            from './injectable';
-import {ResponsiveService}           from './responsive.service';
+import {Injectable, Injector, OnDestroy, OnInit} from '@angular/core';
+import {Breakpoints}                             from './breakpoints';
+import {CustomInjectable}                        from './injectable';
+import {ResponsiveService}                       from './responsive.service';
 
 export type Constructor<T = {}> = new (...args: any[]) => T;
 
@@ -40,11 +40,12 @@ export function ResponsiveComponent<T extends Constructor<IResponsiveComponent>>
       this.responsiveService.subscribe(Breakpoints.forTabletLandscapeUp, this.forTabletLandscapeUp);
       this.responsiveService.subscribe(Breakpoints.forDesktopUp, this.forDesktopUp);
       this.responsiveService.subscribe(Breakpoints.forBigDesktop, this.forBigDesktop);
-      this.responsiveService.callCallbacks();
 
       if (super.ngOnInit) {
         super.ngOnInit();
       }
+
+      this.responsiveService.callCallbacks();
     }
 
     ngOnDestroy() {

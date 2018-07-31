@@ -1,7 +1,8 @@
-import {Component, Injector}                       from '@angular/core';
+import {Component, Inject, Injector}               from '@angular/core';
 import {ActivatedRoute}                            from '@angular/router';
-import {ComponentSize}                             from '../../../../../lib/src/lib/component-sizes';
-import {IResponsiveComponent, ResponsiveComponent} from '../../../../../lib/src/lib/responsive.component';
+import {ComponentSize}                             from '../../../../../lib/src/public_api';
+import {IResponsiveComponent, ResponsiveComponent} from '../../../../../lib/src/public_api';
+import {testToken}                                 from '../../../providers/test';
 
 @Component({
   selector: 'app-catalog',
@@ -12,10 +13,12 @@ import {IResponsiveComponent, ResponsiveComponent} from '../../../../../lib/src/
 export class CatalogComponent implements IResponsiveComponent {
   gridSize: ComponentSize;
   cards: string[];
+  test: boolean;
 
   constructor(public injector: Injector,
               public route: ActivatedRoute) {
 
+    this.test = this.injector.get(testToken) as boolean;
     this.cards = this.route.snapshot.data['cards'];
   }
 

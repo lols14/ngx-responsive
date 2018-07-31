@@ -6,7 +6,7 @@ describe('Responsive service', function () {
   let service: ResponsiveService;
 
   beforeEach(function () {
-    service = new ResponsiveService(breakpointsMap);
+    service = new ResponsiveService(breakpointsMap, false);
   });
 
   it('should call correct callbacks', function () {
@@ -84,7 +84,7 @@ describe('Responsive service', function () {
 
   it('should to have current breakpoint', () => {
     (window['innerWidth'] as any) = 400;
-    service = new ResponsiveService(breakpointsMap);
+    service = new ResponsiveService(breakpointsMap, false);
 
     expect(service.currentBreakpoint).toEqual(Breakpoints.forPhoneUp);
   });

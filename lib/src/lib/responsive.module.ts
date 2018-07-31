@@ -1,6 +1,7 @@
 import {ModuleWithProviders, NgModule}       from '@angular/core';
 import {Breakpoints}                         from './breakpoints';
 import {breakpointsMap, breakpointsMapToken} from './breakpoints-map';
+import {isServerProvider}                    from './is-server-token';
 import {ResponsiveService}                   from './responsive.service';
 
 @NgModule()
@@ -9,6 +10,7 @@ export class ResponsiveModule {
     return {
       ngModule: ResponsiveModule,
       providers: [
+        isServerProvider,
         {
           provide: breakpointsMapToken,
           useValue: customBreakpointsMap || breakpointsMap,

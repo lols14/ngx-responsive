@@ -1,7 +1,6 @@
 import {Injectable}                      from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve} from '@angular/router';
-import {Breakpoints}                     from '../../../lib/src/lib/breakpoints';
-import {ResponsiveService}               from '../../../lib/src/lib/responsive.service';
+import {Breakpoints, ResponsiveService}  from '../../../lib/src/public_api';
 
 @Injectable()
 export class CardsResolver implements Resolve<any> {

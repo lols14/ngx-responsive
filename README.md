@@ -1,10 +1,8 @@
 # ngx-responsive - Angular library that helps you to control component sizes.
 
 [![npm version](https://badge.fury.io/js/ngx-responsive-helper.svg)](https://badge.fury.io/js/ngx-responsive-helper),
-[![Build Status](https://travis-ci.org/lols14/ngx-responsive-helper.svg?branch=master)](https://travis-ci.org/lols14/ngx-responsive-helper)
 [![Coverage Status](https://coveralls.io/repos/github/lols14/ngx-responsive-helper/badge.svg)](https://coveralls.io/github/lols14/ngx-responsive-helper)
 [![dependency Status](https://david-dm.org/lols14/ngx-responsive-helper/status.svg)](https://david-dm.org/lols14/ngx-responsive-helper)
-[![devDependency Status](https://david-dm.org/lols14/ngx-responsive-helper/dev-status.svg?branch=master)](https://david-dm.org/lols14/ngx-responsive-helper#info=devDependencies)
 
 ## Main goal
 ```
@@ -22,9 +20,9 @@ StateComponent Breakpoints.forPhoneUp
 
 My goal is - creation of independent and re-used components
 
-1. `StateComponent` knows what size should have `1.3 UiComponent` and knows nothing about `2.1 UiComponent Size.xs`
-2. `StateComponent` depends on Breakpoints and manipulate with inner child sizes
-3. `UiComponent` depends on `ComponentSize` interface and knows nothing about breakpoints
+1. `StateComponent` knows the size of `1.3 UiComponent` and has no information about the size of `2.1 UiComponent`,
+2. `StateComponent` depends on breakpoints and has control over the size of child components.
+3. `UiComponent` depends on `ComponentSize` interface and knows nothing about breakpoints.
 
 
 
@@ -82,7 +80,7 @@ ResponsiveModule.forFoot(customBreakpoints)
 
 app.component.ts
 ```typescript
-
+import { Component, Injector } from '@angular/core';
 import { ComponentSize, ResponsiveComponent } from 'ngx-responsive-helper';
 
 @Component({
@@ -94,6 +92,11 @@ export class AppComponent {
   
   gridSize: ComponentSize
   cards = [];
+  
+  // Needs injector for work
+  constructor(public injector: Injector){
+    
+  }
   
   forPhoneUp = () => {
     this.gridSize = ComponentSize.xs;
@@ -233,8 +236,5 @@ export class CardsResolver implements Resolve<any> {
 }
 ```
 
-
-
-
 ## License
-Copyright (c) 2018 Sergiy. Licensed under the MIT License (MIT)
+Copyright (c) 2018 Sergiy Pavlichenko. Licensed under the MIT License (MIT)

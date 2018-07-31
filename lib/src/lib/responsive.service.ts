@@ -1,7 +1,8 @@
-import {Inject, Injectable}  from '@angular/core';
-import {debounce}            from 'lodash';
-import {Breakpoints}         from './breakpoints';
-import {breakpointsMapToken} from './breakpoints-map';
+import {Inject, Injectable, Optional} from '@angular/core';
+import {debounce}                     from 'lodash';
+import {Breakpoints}                  from './breakpoints';
+import {breakpointsMapToken}          from './breakpoints-map';
+import {isServerToken}                from './is-server-token';
 
 @Injectable()
 export class ResponsiveService {
@@ -10,11 +11,17 @@ export class ResponsiveService {
   currentBreakpoint: Breakpoints | null = null;
 
   constructor(@Inject(breakpointsMapToken)
-              public breakpointsMap: Map<Breakpoints, number[]>
+              private breakpointsMap: Map<Breakpoints, number[]>,
+              @Inject(isServerToken)
+              private isServer: boolean
   ) {
+    if (this.isServer) {
+      return;
+    }
+
     this.onResize();
     this.onResize = debounce(this.onResize, 20);
-    window.addEventListener ? window.addEventListener('resize', this.onResize) : this.noop();
+    window.addEventListener('resize', this.onResize);
   }
 
   subscribe(type: Breakpoints, cb: () => any) {
@@ -56,7 +63,7 @@ export class ResponsiveService {
   };
 
   private onResize = () => {
-    this.width = window.innerWidth || 0;
+    this.width = window.innerWidth;
     this.currentBreakpoint = this.getCurrentBreakpoint();
     this.callCallbacks();
   };
@@ -66,8 +73,5 @@ export class ResponsiveService {
       return;
     }
     this.cbs[breakpoint].forEach((cb) => cb());
-  }
-
-  private noop() {
   }
 }
