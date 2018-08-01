@@ -1,6 +1,6 @@
 # ngx-responsive - Angular library that helps you to control component sizes.
 
-[![npm version](https://badge.fury.io/js/ngx-responsive-helper.svg)](https://badge.fury.io/js/ngx-responsive-helper),
+[![npm version](https://badge.fury.io/js/ngx-responsive-helper.svg)](https://badge.fury.io/js/ngx-responsive-helper)
 [![Coverage Status](https://coveralls.io/repos/github/lols14/ngx-responsive-helper/badge.svg)](https://coveralls.io/github/lols14/ngx-responsive-helper)
 [![dependency Status](https://david-dm.org/lols14/ngx-responsive-helper/status.svg)](https://david-dm.org/lols14/ngx-responsive-helper)
 
@@ -58,7 +58,7 @@ import {ResponsiveModule}     from 'ngx-responsive-helpe';
   ...
   imports: [
     ...
-    ResponsiveModule.forFoot()
+    ResponsiveModule.forRoot()
   ],
   ...
 })
@@ -75,7 +75,7 @@ const customBreakpoints =   new Map([
   [Breakpoints.forBigDesktop, [1800, 100000]]
 ]);
 
-ResponsiveModule.forFoot(customBreakpoints)
+ResponsiveModule.forRoot(customBreakpoints)
 ```
 
 app.component.ts
